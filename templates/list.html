@@ -1,0 +1,35 @@
+{%extends "includes/layout.html"%}
+{%block content%}
+
+    {% if articles|length == 0 %}
+    Henüz sistemde makale yok.
+    {% else %}
+    <i style="font-size: 15px;font-weight: bold;color: red;" >Toplam {{ articles | length }} makele var.{{ page }}. sayfayı görüntülüyorsun ve her sayfada 10 makale sıralanıyor.</i><br><br>
+    	    <section class="blog-list px-3 py-5 p-md-5">
+            {% for i in range(min,max) %}
+			    <div class="item mb-5">
+				    <div class="media">
+                        {% if articles[i].image | length %}
+					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{articles[i].image}}" alt="image">
+                        {% endif %}
+					    <div class="media-body">
+						    <h3 class="title mb-1"><a href="/read/{{articles[i].id}}">{{articles[i].subject | safe}}</a></h3>
+						    <div class="meta mb-1"><span class="date">{{articles[i].date}} tarihinde {{articles[i].writenby}} tarafından yayınlandı.</span></div>
+						    <div class="intro">{{articles[i].text[0:50]}}...</div>
+						    <a class="more-link" href="/read/{{articles[i].id}}">Devamını oku &rarr;</a>
+                            {% if session["logged_in"] %}
+                                <br> <a href="/admin/deletearticle/{{ articles[i].id }}"><button class="btn btn-danger">SİL</button></a>  <a href="/admin/editarticle/{{ articles[i].id }}"><button class="btn btn-success">DÜZENLE</button> </a>
+                            {% endif %}
+					    </div><!--//media-body-->
+				    </div><!--//media-->
+			    </div><!--//item-->
+            {% endfor %}
+
+            </section>
+
+<nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-prev nav-item nav-link {{ statusprevious }} rounded-left" href="/list/{{ p }}">Önceki Sayfa<i class="arrow-prev fas fa-long-arrow-alt-left"></i></a>
+				  <a class="nav-link-next nav-item nav-link {{ statusnext }} rounded-right" href="/list/{{ n }}">Sonraki Sayfa<i class="arrow-next fas fa-long-arrow-alt-right"></i></a>
+				</nav>
+    {% endif %}
+{%endblock%}

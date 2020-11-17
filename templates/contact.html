@@ -1,0 +1,12 @@
+{%extends "includes/layout.html"%}
+{%block content%}
+<h2 class="level-title"> Bana Ulaşın </h2>
+Bana ulaşmak için aşağıdaki formu doldurabilirsiniz.En kısa sürede mesajınızı okuyup e-posta adresinize dönüş yapmaya çalışacağım.
+<hr>
+<form method="post">
+{{render_field(form.name,class="form-control input-normal")}}
+{{render_field(form.email,class="form-control input-normal")}}
+{{render_field(form.message,class="form-control input-normal")}}
+<input type="submit" value="GÖNDER" class="btn btn-primary">
+</form>
+{%endblock%}

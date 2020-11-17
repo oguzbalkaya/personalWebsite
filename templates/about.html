@@ -1,0 +1,81 @@
+{%extends "includes/layout.html"%}
+{%block content%}
+        <hr>
+        Türkçe CV'mi <a href="/cv/tr" style="color:red;font-weight:bold;">buradan</a> indirebilirsin.<br>
+        You can download my English CV <a href="/cv/tr" style="color:red;font-weight:bold;">here.</a>
+        <hr>
+        <h2 class="level-title">Hakkımda</h2>
+        <hr>
+        <h3 class="level-title"> Özet </h3>
+        <p> {{info.aboutme}} </p>
+        <hr>
+        <h3 class="level-title"> Eğitim {% if session["logged_in"] %}
+        <a href="/admin/addschool"><button class="btn btn-outline-success">EKLE</button></a>
+        {% endif %}</h3>
+        <ul>
+      {%for school in education%}
+        <li><b>{{school.school}} ({{school.start}}-{{school.finish}})</b> {% if session["logged_in"] %}
+        <a href="/admin/editschool/{{ school.id }}">Düzenle</a> - <a href="/admin/deleteschool/{{ school.id }}">Kaldır</a>
+        {% endif %}
+        {%if school.text|length > 0%}
+        <br>
+             {{school.text | safe}}
+            {%endif%}
+            </li>
+      {%endfor%}
+        </ul>
+        <hr>
+        <h2 class="level-title"> Yeteneklerim {% if session["logged_in"] %}
+        <a href="/admin/addtalent"><button class="btn btn-outline-success">EKLE</button></a>
+        {% endif %}
+        </h2>
+             <hr>
+       
+      {% for talent in talents %}
+        <h4 class="level-title">{{talent.name}}</h4> {% if session["logged_in"] %}
+        <a href="/admin/edittalent/{{ talent.id }}">Düzenle</a> | <a href="/admin/deletetalent/{{ talent.id }}">Kaldır</a>
+        {% endif %}
+        {% if talent.text|length > 0%}
+        {{talent.text | safe}}
+        {%endif%}
+        <div class="progress level-bar">
+        <div class="progress-bar theme-progress-bar" role="progressbar" style="width: {{talent.purcent}}%" aria-valuenow="{{talent.purcent}}" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>    
+
+      {%endfor%}  
+        <hr>
+        
+        <h3 class="level-title"> Çalışma Geçmişi {% if session["logged_in"] %}
+        <a href="/admin/addwork"><button class="btn btn-outline-success">EKLE</button></a>
+        {% endif %}</h3>
+        <ul>
+           {%for work in workexperiences%}
+             <li><b>{{work.name}}  ({{work.start}} - {{work.finish}})</b> {% if session["logged_in"] %}
+        <a href="/admin/editwork/{{ work.id }}">Düzenle</a> | <a href="/admin/deletework/{{ work.id }}">Kaldır</a>
+        {% endif %}
+             {%if work.text|length%}
+             <br>
+            {{work.text | safe}}
+            {%endif%}
+            </li>
+        {%endfor%}
+        </ul>
+        <hr>
+                <h3 class="level-title"> Kulüp Üyelikleri {% if session["logged_in"] %}
+        <a href="/admin/addclub"><button class="btn btn-outline-success">EKLE</button></a>
+        {% endif %}</h3>
+        <ul>
+         {%for club in clubmemberships%}
+        <li><b>{{club.name}} {% if session["logged_in"] %}</b>
+        <a href="/admin/editclub/{{ club.id }}">Düzenle</a> | <a href="/admin/deleteclub/{{ club.id }}">Kaldır</a>
+        {% endif %}
+        {%if club.text|length>0%}
+        <br>
+        {{club.text | safe}}
+        {%endif%}    
+            </li>
+        {%endfor%}
+        </ul>
+
+
+{%endblock%}

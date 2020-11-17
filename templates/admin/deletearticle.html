@@ -1,0 +1,17 @@
+{%extends "includes/layout.html"%}
+{%block content%}
+<i style="font-weight: bold;color: red;font-size: 20px;">
+{{ article[0].writenby }} tarafından {{ article[0].date }} tarihinde yazılmış {{ article[0].subject }} konulu makaleyi silmek istediğine emin misin?
+<br> Silmeden önce makaleyi <a target="_blank" href="/read/{{ article[0].id }}">buradan</a> okuyabilirsin.
+
+    <br>
+    <br> Makale sistemden tamamen silinmez. Yedeğine veritabanından ulaşabilirsiniz.
+
+<form method="post">
+    <input class="btn btn-danger" type="submit" name="delete" value="Makaleyi Sil">
+</form>
+    <br>
+    <a href="/admin/dashboard"><input class="btn btn-success" type="submit" name="delete" value="Vazgeç"></a>
+
+</i>
+{%endblock%}

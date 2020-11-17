@@ -1,0 +1,11 @@
+{%extends "includes/layout.html" %}
+{%block content%}
+    <form method="post">
+    <i style="font-weight: bold;color: red;font-size: 24px;">Bu alana erişmek için kimliğinizi doğrulayın.</i>
+                    <div class="form-group">
+                        {{render_field(form.username,class="form-control mr-md-1 semail")}}
+                        {{render_field(form.password,class="form-control mr-md-1 semail")}}
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Giriş yap">
+                </form>
+{%endblock%}

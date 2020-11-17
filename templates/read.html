@@ -1,0 +1,14 @@
+{%extends "includes/layout.html"%}
+{%block content%}
+ <header class="blog-post-header">
+				    <h2 class="title mb-2">{{ article[0].subject }}</h2>
+				    <div class="meta mb-3"><span class="date">{{ article[0].date }} tarihinde {{ article[0].writenby }} tarafından yazıldı.</span></div>
+			    </header>
+
+			    <div class="blog-post-body">
+
+                {{ article[0].text | safe }}
+
+			    </div>
+
+{%endblock%}

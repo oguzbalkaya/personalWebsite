@@ -1,0 +1,13 @@
+{% extends "includes/layout.html" %}
+{%block content%}
+
+<form method="post">
+{{render_field(form.subject,class="form-control input-normal")}}
+{{render_field(form.image,class="form-control input-normal")}}
+{{render_field(form.text)}}
+<input type="submit" value="GÖNDER" class="btn btn-primary">
+                <script>
+                        CKEDITOR.replace( 'text' );
+                </script>
+
+{%endblock%}

@@ -1,0 +1,22 @@
+{% extends "includes/layout.html" %}
+{%block content%}
+<section class="cta-section theme-bg-light py-5">
+		    <div class="container text-center">
+			    <div class="intro">Bloğuma hoşgeldin.Bloğa aşağıdan e-psota adresinle abone olarak yazılarım yayınlandığında hemen haberdar olabilirsin.</div>
+			    <form method="post">
+                    <div class="form-group">
+                        {{render_field(form.email,class="form-control mr-md-1 semail",placeholder="E-Posta adresin")}}
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Abone Ol">
+                </form>
+		    </div><!--//container-->
+	    </section>
+		<br>
+		<hr>
+
+
+			    <nav class="blog-nav nav nav-justified my-5">
+				  <a class="nav-link-next nav-item nav-link rounded" href="/list/">Makaleleri görüntüle</a>
+				</nav>
+
+{%endblock%}

@@ -1,0 +1,56 @@
+<header class="header text-center">	    
+	<h1 class="blog-name pt-lg-4 mb-0"><a href="{{ info.header_sitename_link }}">{{ info.header_sitename | safe }}</a></h1>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark" >
+		
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div id="navigation" class="collapse navbar-collapse flex-column" >
+			<div class="profile-section pt-3 pt-lg-0">
+				<img class="profile-image mb-3 rounded-circle mx-auto" src="{{ info.image }}" alt="image" >
+
+				<div class="bio mb-3">{{ info.header_text | safe }}</div><!--//bio-->
+				<ul class="social-list list-inline py-3 mx-auto">
+					<li class="list-inline-item"><a target="_blank" href="https://twitter.com/{{info.twitter}}"><i class="fab fa-twitter fa-fw"></i></a></li>
+					<li class="list-inline-item"><a target="_blank" href="https://linkedin.com/{{info.linkedin}}"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
+					<li class="list-inline-item"><a target="_blank" href="https://github.com/{{info.github}}"><i class="fab fa-github-alt fa-fw"></i></a></li>
+					<li class="list-inline-item"><a target="_blank" href="https://instagram.com/{{info.instagram}}"><i class="fab fa-instagram fa-fw"></i></a></li>
+				</ul><!--//social-list-->
+				<hr> 
+			</div><!--//profile-section-->
+			
+			<ul class="navbar-nav flex-column text-left">
+
+
+                {% if session["logged_in"] %}
+                <li class="nav-item active">
+					<a class="nav-link" href="/list/1"><i class="fas fa-user fa-fw mr-2"></i>Makale Listesi </a>
+                    <a class="nav-link" href="/admin/addarticle"><i class="fas fa-user fa-fw mr-2"></i>Makale Ekle </a>
+					<a class="nav-link" href="/admin/messages"><i class="fas fa-user fa-fw mr-2"></i>İletişim Formları </a>
+					<a class="nav-link" href="/admin/subscribers"><i class="fas fa-user fa-fw mr-2"></i>Aboneler </a>
+					<a class="nav-link" href="/about"><i class="fas fa-user fa-fw mr-2"></i>CV Sayfam </a>
+					<a class="nav-link" href="/admin/logout"><i class="fas fa-user fa-fw mr-2"></i>Çıkış Yap </a>
+
+				</li>
+                {% else %}
+
+				<li class="nav-item active">
+					<a class="nav-link" href="/"><i class="fas fa-home fa-fw mr-2"></i>Ana Sayfa </a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/contact"><i class="fas fa-pen fa-fw mr-2"></i>İletişim</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/about"><i class="fas fa-user fa-fw mr-2"></i>Hakkımda</a>
+				</li>
+                <li class="nav-item active">
+					<a class="nav-link" href="/list/1"><i class="fas fa-user fa-fw mr-2"></i>Makaleler</a>
+				</li>
+                {% endif %}
+			</ul>
+	
+		</div>
+	</nav>
+</header>

@@ -1,0 +1,29 @@
+{%extends "includes/layout.html" %}
+{%block content%}
+<table class="table table-striped my-5">
+	<tbody>
+	<thead>
+	    <tr>
+	        <th scope="col">E-Posta</th>
+	        <th scope="col">Abonelik Tarihi</th>
+	        <th scope="col">Durum</th>
+	    </tr>
+	</thead>
+
+    {% for sub in subs %}
+	<tr>
+		<td>{{sub.email}}</td>
+		<td>{{sub.date}}</td>
+		<td>
+        {% if sub.status == "Active" %}
+            <i style="color: green;">Aktif</i>
+        {% else %}
+            <i style="color: red;">Aktif Değil</i>
+
+        {% endif %}
+        </td>
+	</tr>
+    {% endfor %}
+	</tbody>
+</table>
+{%endblock%}

@@ -1,0 +1,21 @@
+{%extends "includes/layout.html"%}
+{%block content%}
+<i style="font-weight: bold;color: red;font-size: 20px;">
+    <br>
+    <br> Silmek istediğinden emin misin? <br>Silme işlemi tamamlandığında geri alınamaz.
+
+
+
+    <table>
+        <tr>
+            <td>
+                <form method="post">
+     <input class="btn btn-danger" type="submit" name="delete" value="SİL">
+                </form>
+            </td>
+            <td><a href="/admin/dashboard"><input class="btn btn-success" type="submit" name="delete" value="Vazgeç"></a></td>
+        </tr>
+    </table>
+
+</i>
+{%endblock%}

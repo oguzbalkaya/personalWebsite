@@ -1,0 +1,34 @@
+{%extends "includes/layout.html" %}
+{%block content%}
+<table class="table table-striped my-5">
+	<tbody>
+	<thead>
+	    <tr>
+	        <th scope="col">Gönderen</th>
+	        <th scope="col">Tarih</th>
+	        <th scope="col">E-Posta</th>
+	    </tr>
+	</thead>
+	<tr>
+		<td>{{datas[0].name}}</a></td>
+		<td>{{datas[0].date}}</td>
+		<td>{{datas[0].email}}</td>
+	</tr>
+		<tr>
+		<td colspan="3">{{datas[0].message}}</a></td>
+	</tr>
+
+	</tbody>
+</table>
+<i style="font-size:20px,font-weight:bold;color:black;"> Aşağıdaki form ile cevap yolladığınızda cevabınız mesajı yollayanın e-posta adresine information.py dosyasında yazdığınız e-posta adresi üzerinden yollanıyor.<br>
+ </i>
+
+
+<form method="post">
+{{render_field(form.subject,class="form-control input-normal")}}
+{{render_field(form.text)}}
+<input type="submit" value="GÖNDER" class="btn btn-primary">
+                <script>
+                        CKEDITOR.replace( 'text' );
+                </script>
+{%endblock%}

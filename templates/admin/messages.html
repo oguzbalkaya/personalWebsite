@@ -1,0 +1,30 @@
+{%extends "includes/layout.html" %}
+{%block content%}
+<table class="table table-striped my-5">
+	<thead>
+	    <tr>
+	        <th scope="col">Gönderen</th>
+	        <th scope="col">Tarih</th>
+	    </tr>
+	</thead>
+	<tbody>
+{%if messages | length%}
+
+
+{% for message in messages %}
+	<tr>
+		<td><a href="/admin/readmessage/{{message.id}}">{{message.name}}</a></td>
+		<td>{{message.date}}</td>
+	</tr>
+
+{%endfor%}
+
+
+{%else%}
+<tr>
+		<td colspan="2">Cevaplanmayı bekleyen mesaj yok.</td>
+	</tr>
+{%endif%}
+	</tbody>
+</table>
+{%endblock%}
